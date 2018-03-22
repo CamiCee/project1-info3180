@@ -66,7 +66,8 @@ def getall():
     conn = None
     #row=k
     #params = app.config()
-    conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI']) #**params)
+    conn = psycopg2.connect(app.config['SQLALCHEMY_DATABASE_URI'], sslmode='require') #**params)
+    #conn = psycopg2.connect("postgresql://snwrsyweqruemh:78217000d03a8e13303e883488233b14ddaa9e1eb738cceb81b9f533d7037e07@ec2-54-243-210-70.compute-1.amazonaws.com:5432/d6skuaqkm425rb")
     cur = conn.cursor()
     cur.execute("SELECT myid,fname, lname, gender,location, image from user_profile")
     row=cur.fetchall()
